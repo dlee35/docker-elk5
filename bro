@@ -15,15 +15,15 @@
 ################################################################################
 TS %{NUMBER:ts}
 UID %{DATA:uid}
-ORIGH %{IP:src_ip}
+ORIGH %{DATA:src_ip}
 ORIGP %{INT:src_port}
-RESPH %{IP:dst_ip}
+RESPH %{DATA:dst_ip}
 RESPP %{INT:dst_port}
 BROHEADER %{TS}\t%{UID}\t%{ORIGH}\t%{ORIGP}\t%{RESPH}\t%{RESPP}
 BROAPPSTATS %{TS}\t%{DATA:ts_delta}\t%{DATA:app}\t%{DATA:uniq_hosts}\t%{DATA:hits}\t%{DATA:bytes}
 BROCAPTURELOSS %{TS}\t%{DATA:ts_delta}\t%{DATA:peer}\t%{DATA:gaps}\t%{DATA:acks}\t%{DATA:percent_loss}
 BROCOMMUNICATION %{TS}\t%{DATA:peer}\t%{DATA:src_name}\t%{DATA:connected_peer_desc}\t%{DATA:connected_peer_addr}\t%{DATA:connected_peer_port}\t%{DATA:level}\t%{GREEDYDATA:msg}
-BROCONN %{NUMBER:ts}\t%{DATA:uid}\t%{IP:src_ip}\t%{INT:src_port}\t%{IP:dst_ip}\t%{INT:dst_port}\t%{DATA:proto}\t%{DATA:service}\t%{DATA:duration}\t%{DATA:orig_bytes}\t%{DATA:resp_bytes}\t%{DATA:conn_state}\t%{DATA:local_orig}\t%{DATA:local_resp}\t%{DATA:missed_bytes}\t%{DATA:history}\t%{DATA:orig_pkts}\t%{DATA:orig_ip_bytes}\t%{DATA:resp_pkts}\t%{DATA:resp_ip_bytes}\t%{GREEDYDATA:tunnel_parents}\t%{DATA:orig_cc}\t%{DATA:resp_cc}\t%{GREEDYDATA:sensorname}
+BROCONN %{NUMBER:ts}\t%{DATA:uid}\t%{DATA:src_ip}\t%{INT:src_port}\t%{DATA:dst_ip}\t%{INT:dst_port}\t%{DATA:proto}\t%{DATA:service}\t%{DATA:duration}\t%{DATA:orig_bytes}\t%{DATA:resp_bytes}\t%{DATA:conn_state}\t%{DATA:local_orig}\t%{DATA:local_resp}\t%{DATA:missed_bytes}\t%{DATA:history}\t%{DATA:orig_pkts}\t%{DATA:orig_ip_bytes}\t%{DATA:resp_pkts}\t%{DATA:resp_ip_bytes}\t%{GREEDYDATA:tunnel_parents}\t%{DATA:orig_cc}\t%{DATA:resp_cc}\t%{GREEDYDATA:sensorname}
 BRODHCP %{BROHEADER}\t%{DATA:mac}\t%{IP:assigned_ip>}\t%{DATA:lease_time}\t%{GREEDYDATA:trans_id}
 BRODNP3 %{TS}\t%{UID}\t%{DATA:id}\t%{DATA:fc_request}\t%{DATA:fc_reply}\t%{DATA:iin}
 BRODNS %{BROHEADER}\t%{DATA:proto}\t%{DATA:trans_id}\t%{DATA:query}\t%{DATA:qclass}\t%{DATA:qclass_name}\t%{DATA:qtype}\t%{DATA:qtype_name}\t%{DATA:rcode}\t%{DATA:rcode_name}\t%{DATA:AA}\t%{DATA:TC}\t%{DATA:RD}\t%{DATA:RA}\t%{DATA:Z}\t%{DATA:answers}\t%{DATA:TTLs}\t%{DATA:rejected}
