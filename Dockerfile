@@ -58,7 +58,7 @@ sed -i -e '/^#\ network.host.* /s/^#\ //' -e '/^network.host.* /s/192.168.0.1/12
 /etc/elasticsearch/elasticsearch.yml
 
 # Pushed this into a separate action for testing
-service elasticsearch start && \
+RUN service elasticsearch start && \
 sleep 10 && \
 bash /etc/init.d/createmapping.sh
 
