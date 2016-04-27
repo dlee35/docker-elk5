@@ -55,9 +55,12 @@ chmod +x /etc/init.d/createmapping.sh && \
 sed -i 's/agent\ //' /etc/init.d/logstash && \
 sed -i -e '/^#\ network.host.* /s/^#\ //' -e '/^network.host.* /s/192.168.0.1/127.0.0.1/' \
 -e '/^#\ discovery.zen.minimum.* /s/^#\ //' -e '/master_nodes:\ 3$/ s/3/1/' \
-/etc/elasticsearch/elasticsearch.yml && \
-service elasticsearch start &&\
-sleep 5 && bash /etc/init.d/createmapping.sh
+/etc/elasticsearch/elasticsearch.yml
+
+# Pushed this into a separate action for testing
+service elasticsearch start && \
+sleep 10 && \
+bash /etc/init.d/createmapping.sh
 
 # Bro patterns slightly altered
 COPY bro /etc/logstash/patterns/bro
