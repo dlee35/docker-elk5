@@ -60,9 +60,9 @@ RUN mkdir /etc/logstash/patterns && \
  /etc/elasticsearch/elasticsearch.yml
 
 # Pushed this into a separate action for testing
-RUN service elasticsearch start && \
- sleep 10 && \
- bash /etc/init.d/createmapping.sh
+RUN /etc/init.d/elasticsearch start && \
+ sleep 5 && \
+ /bin/bash /etc/init.d/createmapping.sh
 
 # Bro patterns slightly altered and allow supervisor to manage the processes
 RUN mv /docker-elk5/bro /etc/logstash/patterns/bro && \
