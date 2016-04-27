@@ -42,7 +42,8 @@ RUN /opt/logstash/bin/logstash-plugin install logstash-input-beats && \
  /opt/logstash/bin/logstash-plugin install logstash-filter-translate
 
 # Simple configuration files for standard operation
-RUN mv /docker-elk5/*.conf /etc/logstash/conf.d/
+RUN mv /docker-elk5/10_input.conf /docker-elk5/20_filter.conf \
+/docker-elk5/90_output.conf /etc/logstash/conf.d/
 
 # Script that creates static mapping in Elastic prior to log ingestion
 RUN mv /docker-elk5/createmapping.sh /etc/init.d/createmapping.sh 
