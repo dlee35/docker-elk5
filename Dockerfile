@@ -15,7 +15,7 @@ MAINTAINER Dustin Lee dlee35@gmail.com
 # Update and install required dependencies
 RUN DEBIAN_FRONTEND=noninteractive && \
  apt-get -qq update && \
- apt-get install -qq wget supervisor \
+ apt-get install -qq wget supervisor git \
  curl software-properties-common logrotate
 
 # Satisfy Java 8 requirement
