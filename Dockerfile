@@ -54,8 +54,8 @@ RUN mv /docker-elk5/10_input.conf /docker-elk5/20_filter.conf \
 
 # Script that creates static mapping in Elastic prior to log ingestion
 RUN mv /docker-elk5/createmapping.sh /docker-elk5/createcert.sh /etc/init.d/ && \
- /docker-elk5/default /etc/nginx/sites-available/default && \
- /docker-elk5/htpasswd.users /etc/nginx/htpasswd.users
+ mv /docker-elk5/default /etc/nginx/sites-available/default && \
+ mv /docker-elk5/htpasswd.users /etc/nginx/htpasswd.users
 
 # Create directory for bro patterns, adjust configs to fix logstash falling over before start
 # (see this link for more: https://github.com/elastic/logstash/pull/5083),
@@ -74,7 +74,7 @@ RUN mkdir /etc/logstash/patterns && \
 
 # Pushed this into a separate action for testing
 # Have to find a better way to allow kibana access to key....
- RUN /bin/bash /etc/init.d/elasticsearch start && \
+RUN /bin/bash /etc/init.d/elasticsearch start && \
  sleep 10 && \
  /bin/bash /etc/init.d/createmapping.sh && \
  /bin/bash /etc/init.d/createcert.sh && \
