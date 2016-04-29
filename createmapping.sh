@@ -1,5 +1,5 @@
 #! /bin/bash
-curl -XPUT 127.0.0.1:9200/_template/logstash -d '
+curl -XPUT localhost:9200/_template/logstash -d '
 {           
             "template": "logstash-*",          
                "settings" : {
