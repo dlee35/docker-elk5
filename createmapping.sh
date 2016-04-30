@@ -9,6 +9,7 @@ curl -XPUT localhost:9200/_template/logstash -d '
                },
                "mappings": {
                  "_default_": {
+                   "dynamic": true,
                    "_all" : {"enabled" : true, "omit_norms" : true},
                    "properties": {
                       "@timestamp": {"type": "date", "doc_values" : true},
@@ -69,8 +70,14 @@ curl -XPUT localhost:9200/_template/logstash -d '
                       "san_dns": {"type":"string", "index":"not_analyzed"},
                       "san_uri": {"type":"string", "index":"not_analyzed"},
                       "san_email": {"type":"string", "index":"not_analyzed"},
-                      "san_ip": {"type":"string", "index":"not_analyzed"}
-                   }
-                 }
-               }  
+                      "san_ip": {"type":"string", "index":"not_analyzed"},
+                      "geoip": {
+                        "properties": {
+                          "ip": {"type": "ip"},
+                          "location": {"type": "geo_point"},
+                          "latitude": {"type": "double"},
+                          "longitude" : {"type": "double"}
+                        }
+                      } 
+        }  
 }'
