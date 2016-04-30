@@ -78,7 +78,7 @@ curl -XPUT localhost:9200/_template/logstash -d '
                           "latitude": {"type": "double"},
                           "longitude" : {"type": "double"}
                         }
-                      } 
+                      },
                       "geoip_dst": {
                         "properties": {
                           "ip": {"type": "ip"},
@@ -87,5 +87,7 @@ curl -XPUT localhost:9200/_template/logstash -d '
                           "longitude" : {"type": "double"}
                         }
                       } 
-        }  
+                }
+           }
+      }  
 }'
