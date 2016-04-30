@@ -71,7 +71,15 @@ curl -XPUT localhost:9200/_template/logstash -d '
                       "san_uri": {"type":"string", "index":"not_analyzed"},
                       "san_email": {"type":"string", "index":"not_analyzed"},
                       "san_ip": {"type":"string", "index":"not_analyzed"},
-                      "geoip": {
+                      "geoip_src": {
+                        "properties": {
+                          "ip": {"type": "ip"},
+                          "location": {"type": "geo_point"},
+                          "latitude": {"type": "double"},
+                          "longitude" : {"type": "double"}
+                        }
+                      } 
+                      "geoip_dst": {
                         "properties": {
                           "ip": {"type": "ip"},
                           "location": {"type": "geo_point"},
