@@ -75,7 +75,7 @@ RUN mkdir /etc/logstash/patterns && \
 # Pushed this into a separate action for testing
 # Have to find a better way to allow kibana access to key....
 RUN /bin/bash /etc/init.d/elasticsearch start && \
- sleep 10 && \
+ sleep 20 && \
  /bin/bash /etc/init.d/createmapping.sh && \
  /bin/bash /etc/init.d/createcert.sh && \
  chown -R kibana /etc/ssl/private/
